@@ -6,6 +6,7 @@ const initialState: UserTypes = {
   name: "",
   password: "",
   phone: "",
+  width: 1440,
 };
 
 export const userSlice = createSlice({
@@ -24,9 +25,13 @@ export const userSlice = createSlice({
     setPhone: (state, action: PayloadAction<string>) => {
       state.phone = action.payload;
     },
+    setWidth: (state, action: PayloadAction<number>) => {
+      state.width = action.payload;
+    },
   },
 });
 
-export const { setEmail, setName, setPassword, setPhone } = userSlice.actions;
+export const { setEmail, setName, setPassword, setPhone, setWidth } =
+  userSlice.actions;
 
 export default userSlice.reducer;

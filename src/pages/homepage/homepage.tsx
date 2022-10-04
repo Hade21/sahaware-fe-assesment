@@ -1,5 +1,5 @@
 import { WomenPictWeb } from "../../assets";
-import { CardArticle, Header } from "../../components";
+import { CardArticle, Footer, Header } from "../../components";
 import { useGetArticlesQuery } from "../../services/postApi/articleApi";
 
 const Homepage = () => {
@@ -11,8 +11,8 @@ const Homepage = () => {
       <div className="image overflow-hidden p-20">
         <img src={WomenPictWeb} alt="home-image" className="h-full w-full" />
       </div>
-      <div className="article px-20">
-        <h1 className="title text-5xl font-bold">Article</h1>
+      <div className="article mb-28 px-20">
+        <h1 className="title text-center text-5xl font-bold">Article</h1>
         <div className="list-article mt-12 grid grid-cols-3 gap-6">
           {isLoading ? (
             <p>Loading...</p>
@@ -33,6 +33,7 @@ const Homepage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </>
   );
 };
