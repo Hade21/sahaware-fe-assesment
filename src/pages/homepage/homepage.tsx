@@ -1,23 +1,30 @@
-import { WomenPictWeb } from "../../assets";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { WomenPictMobile, WomenPictWeb } from "../../assets";
 import { CardArticle, Footer, Header } from "../../components";
 import { useGetArticlesQuery } from "../../services/postApi/articleApi";
 
 const Homepage = () => {
   const { isLoading, data, isError } = useGetArticlesQuery(undefined);
+  const width = useSelector((state: RootState) => state.user.width);
 
   return (
     <>
       <Header />
-      <div className="image overflow-hidden p-20">
-        <img src={WomenPictWeb} alt="home-image" className="h-full w-full" />
+      <div className="image overflow-hidden sm:p-20">
+        <img
+          src={width > 768 ? WomenPictWeb : WomenPictMobile}
+          alt="home-image"
+          className="h-full w-full"
+        />
       </div>
-      <div className="article mb-28 px-20">
+      <div className="article mb-14 mt-8 px-4 sm:mb-28 sm:mt-0 sm:px-20">
         <h1 className="title text-center text-5xl font-bold">Article</h1>
-        <div className="list-article mt-12 grid grid-cols-3 gap-6">
+        <div className="list-article mt-12 grid gap-6 sm:grid-cols-3">
           {isLoading ? (
-            <p>Loading...</p>
+            <p className="w-full text-center">Loading...</p>
           ) : isError ? (
-            <p>Error</p>
+            <p className="text-center">Error fetching data</p>
           ) : (
             data?.content?.slice(-3).map((article, i) => {
               return (
