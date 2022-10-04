@@ -1,3 +1,4 @@
 import Header from "./header/header";
+import CardArticle from "./cardArticle/cardArticle";
 
-export { Header };
+export { Header, CardArticle };
