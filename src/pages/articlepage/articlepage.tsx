@@ -20,7 +20,7 @@ const ArticlePage = () => {
   return (
     <>
       <Header />
-      <div className="list-article md:grid-col-3 my-8 grid grid-cols-1 px-4 md:mt-20 md:mb-64 md:px-60">
+      <div className="list-article my-8 grid grid-cols-1 gap-8 px-4 md:mt-20 md:mb-64 md:grid-cols-3 md:px-[17%]">
         {isLoading ? (
           <p className="text-center">Loading...</p>
         ) : isError ? (
