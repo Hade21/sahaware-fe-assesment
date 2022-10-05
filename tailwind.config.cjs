@@ -9,6 +9,7 @@ module.exports = {
         "biru-2": "#2D9CDB",
         placeholder: "#BDBDBD",
         "input-border": "#ECEFF1",
+        "modals-bg": "rgba(0,0,0,0.65)",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],

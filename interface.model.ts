@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 export interface CardArticleTypes {
   id: string;
@@ -46,4 +46,108 @@ export interface InputProps {
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface ButtonProps {
+  children: ReactNode;
+  type: "submit" | "button";
+}
+
+export interface SignInBody {
+  email: string;
+  password: string;
+}
+
+export interface SignUpBody {
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+}
+
+export interface SignInResponse {
+  code: number;
+  content:
+    | []
+    | {
+        token: string;
+        user: {
+          id: string;
+          name: string;
+          email: string;
+          phone: string;
+          created_at: string;
+          updated_at: string | null;
+          photo: string | null;
+          password: string;
+          expired_token: string | null;
+          reset_token: string | null;
+          is_user: boolean;
+          iat: number;
+          exp: number;
+        };
+      };
+  totalItem?: number;
+  message:
+    | string
+    | {
+        isJoi: boolean;
+        name: string;
+        details: [
+          {
+            message: string;
+            path: string[];
+            type: string;
+            context: {
+              limit: number;
+              value: string;
+              key: string;
+              label: string;
+            };
+          }
+        ];
+        _object: {
+          name: "Rohman";
+          email: "rohman@gmail.co.id";
+          password: "password";
+          phone: "08976589";
+        };
+      };
+}
+
+export interface SignUpResponse {
+  code: number;
+  content?: {
+    name?: string;
+    email?: string;
+    password?: string;
+    phone?: string;
+    id?: string;
+  };
+  totalItems?: number;
+  message:
+    | string
+    | {
+        isJoi: boolean;
+        name: string;
+        details: [
+          {
+            message: string;
+            path: string[];
+            type: string;
+            context: {
+              limit: number;
+              value: string;
+              key: string;
+              label: string;
+            };
+          }
+        ];
+        _object: {
+          name: "Rohman";
+          email: "rohman@gmail.co.id";
+          password: "password";
+          phone: "08976589";
+        };
+      };
 }

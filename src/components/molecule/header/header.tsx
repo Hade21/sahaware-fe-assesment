@@ -4,11 +4,13 @@ import { Brandlogo } from "../../../assets";
 import { BiMenu } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
+import { Modals } from "../../organism";
 
 const Header = () => {
   const location = useLocation();
   const currLocation = location.pathname;
   const [menu, setMenu] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const handleMenu = () => {
     setMenu(!menu);
@@ -16,6 +18,7 @@ const Header = () => {
 
   return (
     <header className="sticky flex items-center justify-between border-b border-b-tipis p-5 sm:px-20 sm:py-5">
+      {modal && <Modals close={(close) => setModal(close)} />}
       <div className="left-side flex items-center gap-6">
         <div className="logo flex items-center gap-2">
           <img src={Brandlogo} alt="brand-logo" className="h-6 w-[133px]" />
@@ -49,7 +52,10 @@ const Header = () => {
         </nav>
       </div>
       <div className="right">
-        <p className="hidden cursor-pointer font-normal text-biru-2 sm:block">
+        <p
+          className="hidden cursor-pointer font-normal text-biru-2 sm:block"
+          onClick={() => setModal(true)}
+        >
           Login
         </p>
         <div className="hamburger">
@@ -96,7 +102,12 @@ const Header = () => {
             >
               <Link to="/create">Create</Link>
             </li>
-            <li className={`cursor-pointer text-biru-2`}>Login</li>
+            <li
+              className={`cursor-pointer text-biru-2`}
+              onClick={() => setModal(true)}
+            >
+              Login
+            </li>
           </ul>
         </nav>
       </div>

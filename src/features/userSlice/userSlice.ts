@@ -14,24 +14,48 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
+      return {
+        ...state,
+        email: action.payload,
+      };
     },
     setName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+      return {
+        ...state,
+        name: action.payload,
+      };
     },
     setPassword: (state, action: PayloadAction<string>) => {
-      state.password = action.payload;
+      return {
+        ...state,
+        password: action.payload,
+      };
     },
     setPhone: (state, action: PayloadAction<string>) => {
-      state.phone = action.payload;
+      return {
+        ...state,
+        phone: action.payload,
+      };
+    },
+    setReset: (state) => {
+      return {
+        ...state,
+        email: "",
+        name: "",
+        password: "",
+        phone: "",
+      };
     },
     setWidth: (state, action: PayloadAction<number>) => {
-      state.width = action.payload;
+      return {
+        ...state,
+        width: action.payload,
+      };
     },
   },
 });
 
-export const { setEmail, setName, setPassword, setPhone, setWidth } =
+export const { setEmail, setName, setPassword, setPhone, setReset, setWidth } =
   userSlice.actions;
 
 export default userSlice.reducer;
