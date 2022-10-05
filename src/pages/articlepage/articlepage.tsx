@@ -15,7 +15,7 @@ const ArticlePage = () => {
     if (!isError) {
       dispatch(setArticle(initialData));
     }
-  }, []);
+  }, [data, isLoading]);
 
   return (
     <>

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { CardArticleTypes } from "../../../../interface.model";
 
 const CardArticle: React.FC<CardArticleTypes> = ({
@@ -6,8 +7,15 @@ const CardArticle: React.FC<CardArticleTypes> = ({
   title,
   shortDesc,
 }) => {
+  const navigate = useNavigate();
+  const handleDetail = () => {
+    navigate(`/article/${id}`);
+  };
   return (
-    <div className="card-article flex h-full w-full flex-col gap-4">
+    <div
+      className="card-article flex h-full w-full cursor-pointer flex-col gap-4"
+      onClick={handleDetail}
+    >
       <div className="image h-0 w-0 overflow-hidden border border-abu bg-abu pb-2/3 pr-full">
         <img
           src={image}
