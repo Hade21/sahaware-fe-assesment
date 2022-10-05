@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky flex items-center justify-between p-5 sm:px-20 sm:py-5">
+    <header className="sticky flex items-center justify-between border-b border-b-tipis p-5 sm:px-20 sm:py-5">
       <div className="left-side flex items-center gap-6">
         <div className="logo flex items-center gap-2">
           <img src={Brandlogo} alt="brand-logo" className="h-6 w-[133px]" />

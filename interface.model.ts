@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface CardArticleTypes {
   id: string;
   title: string;
@@ -35,4 +37,13 @@ export interface UserTypes {
   password: string;
   phone: string;
   width: number;
+}
+
+export interface InputProps {
+  id: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

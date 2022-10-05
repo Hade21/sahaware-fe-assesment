@@ -7,6 +7,8 @@ module.exports = {
         abu: "#848688",
         merah: "#ED3237",
         "biru-2": "#2D9CDB",
+        placeholder: "#BDBDBD",
+        "input-border": "#ECEFF1",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
@@ -15,6 +17,9 @@ module.exports = {
         "1/3": "33.333333%",
         "2/3": "66.666667%",
         full: "100%",
+      },
+      borderColor: {
+        tipis: "rgba(0,0,0,0.25)",
       },
     },
   },
