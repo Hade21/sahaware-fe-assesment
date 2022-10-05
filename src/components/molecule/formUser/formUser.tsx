@@ -7,6 +7,7 @@ import {
   setName,
   setPassword,
   setPhone,
+  setReset,
 } from "../../../features/userSlice/userSlice";
 import {
   useSignInMutation,
@@ -28,11 +29,21 @@ const FormUser = ({ type, close }: FormUserProps) => {
   const phone = useSelector((state: RootState) => state.user.phone);
   const [
     signIn,
-    { isLoading: isLoadingSignin, data: dataSignin, isSuccess: succesLogin },
+    {
+      isLoading: isLoadingSignin,
+      data: dataSignin,
+      isSuccess: succesLogin,
+      isError: errorLogin,
+    },
   ] = useSignInMutation();
   const [
     signUp,
-    { isLoading: isLoadingSignUp, data: dataSignUp, isSuccess: successSignUp },
+    {
+      isLoading: isLoadingSignUp,
+      data: dataSignUp,
+      isSuccess: successSignUp,
+      isError: errorSignUp,
+    },
   ] = useSignUpMutation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,8 +71,8 @@ const FormUser = ({ type, close }: FormUserProps) => {
       await signIn({ email, password });
       if (succesLogin) {
         setCookies("token", dataSignin?.content[0].token);
+        dispatch(setReset());
         close(false);
-        console.log(dataSignin);
       }
     } else {
       await signUp({ name: fullname, email, password, phone });
@@ -87,6 +98,16 @@ const FormUser = ({ type, close }: FormUserProps) => {
                 {formType === "signup" ? "Login" : "Create Account"}
               </span>
             </p>
+            {errorSignUp ? (
+              <div className="error">
+                {dataSignUp?.message?.details[0]?.message}
+              </div>
+            ) : null}
+            {errorLogin ? (
+              <div className="error">
+                {dataSignin?.message?.details[0]?.message}
+              </div>
+            ) : null}
             <form className="mt-12 flex flex-col gap-6" onSubmit={handleSubmit}>
               {formType === "signup" ? (
                 <div className="fullname">
