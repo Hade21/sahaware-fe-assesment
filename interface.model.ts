@@ -18,6 +18,11 @@ export interface ArticleTypes {
   category: string;
 }
 
+export interface CreateArticleBody {
+  body: FormData;
+  token: string;
+}
+
 export interface GetArticlesTypes {
   code: number;
   content: ArticleTypes[];
@@ -126,4 +131,24 @@ export interface SignUpResponse {
   };
   totalItems?: number;
   message?: ErrorResponse;
+}
+
+export interface GetListCategoryResponse {
+  code: number;
+  content: [
+    {
+      id: string;
+      title: string;
+    }
+  ];
+  totalItem?: number;
+  message?: string;
+}
+
+export interface TextAreaProps {
+  id: string;
+  placeholder: string;
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }

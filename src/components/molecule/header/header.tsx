@@ -5,9 +5,11 @@ import { BiMenu } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
 import { Modals } from "../../organism";
+import { useCookies } from "react-cookie";
 
 const Header = () => {
   const location = useLocation();
+  const [cookies, setCookies, removeCookies] = useCookies(["token"]);
   const currLocation = location.pathname;
   const [menu, setMenu] = useState(false);
   const [modal, setModal] = useState(false);
@@ -52,11 +54,12 @@ const Header = () => {
         </nav>
       </div>
       <div className="right">
-        <p
-          className="hidden cursor-pointer font-normal text-biru-2 sm:block"
-          onClick={() => setModal(true)}
-        >
-          Login
+        <p className="hidden cursor-pointer font-normal text-biru-2 sm:block">
+          {cookies.token ? (
+            <span onClick={() => removeCookies("token")}>Logout</span>
+          ) : (
+            <span onClick={() => setModal(true)}>Login</span>
+          )}
         </p>
         <div className="hamburger">
           {menu ? (
@@ -102,11 +105,12 @@ const Header = () => {
             >
               <Link to="/create">Create</Link>
             </li>
-            <li
-              className={`cursor-pointer text-biru-2`}
-              onClick={() => setModal(true)}
-            >
-              Login
+            <li className={`cursor-pointer text-biru-2`}>
+              {cookies.token ? (
+                <span onClick={() => removeCookies("token")}>Logout</span>
+              ) : (
+                <span onClick={() => setModal(true)}>Login</span>
+              )}
             </li>
           </ul>
         </nav>

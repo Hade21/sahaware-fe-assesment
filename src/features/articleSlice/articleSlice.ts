@@ -4,6 +4,12 @@ import { ArticleTypes } from "../../../interface.model";
 interface initialStateTypes {
   content: ArticleTypes[] | undefined;
   selectedArticle: ArticleTypes | undefined;
+  newTitle: string;
+  newShortDescription: string;
+  newImage: string;
+  newCategory: string;
+  published: boolean;
+  newDiscription: string;
 }
 const initialState: initialStateTypes = {
   content: [],
@@ -17,6 +23,12 @@ const initialState: initialStateTypes = {
     created_by: "",
     category: "",
   },
+  newTitle: "",
+  newShortDescription: "",
+  newImage: "",
+  newCategory: "",
+  published: false,
+  newDiscription: "",
 };
 
 export const articleSlice = createSlice({
@@ -35,10 +47,37 @@ export const articleSlice = createSlice({
     ) => {
       state.selectedArticle = action.payload;
     },
+    setNewTitle: (state, action: PayloadAction<string>) => {
+      state.newTitle = action.payload;
+    },
+    setNewShortDescription: (state, action: PayloadAction<string>) => {
+      state.newShortDescription = action.payload;
+    },
+    setNewImage: (state, action: PayloadAction<string>) => {
+      state.newImage = action.payload;
+    },
+    setNewCategory: (state, action: PayloadAction<string>) => {
+      state.newCategory = action.payload;
+    },
+    setPublished: (state, action: PayloadAction<boolean>) => {
+      state.published = action.payload;
+    },
+    setNewDiscription: (state, action: PayloadAction<string>) => {
+      state.newDiscription = action.payload;
+    },
   },
 });
 
-export const { setArticle, addArticle, setSelectedArticle } =
-  articleSlice.actions;
+export const {
+  setArticle,
+  addArticle,
+  setSelectedArticle,
+  setNewTitle,
+  setNewCategory,
+  setNewDiscription,
+  setNewImage,
+  setNewShortDescription,
+  setPublished,
+} = articleSlice.actions;
 
 export default articleSlice.reducer;

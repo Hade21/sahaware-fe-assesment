@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { GetArticlesTypes } from "../../../interface.model";
+import {
+  CreateArticleBody,
+  GetArticlesTypes,
+  GetListCategoryResponse,
+} from "../../../interface.model";
 
 export const articleApi = createApi({
   reducerPath: "articleApi",
@@ -10,7 +14,25 @@ export const articleApi = createApi({
     getArticles: builder.query<GetArticlesTypes, undefined>({
       query: () => "/article",
     }),
+    getListCategory: builder.query<GetListCategoryResponse, undefined>({
+      query: () => "/article-category",
+    }),
+    createNewArticle: builder.mutation<any, CreateArticleBody>({
+      query: ({ body, token }) => ({
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+        url: "/article/create",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetArticlesQuery } = articleApi;
+export const {
+  useGetArticlesQuery,
+  useGetListCategoryQuery,
+  useCreateNewArticleMutation,
+} = articleApi;

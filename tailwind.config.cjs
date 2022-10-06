@@ -10,6 +10,8 @@ module.exports = {
         placeholder: "#BDBDBD",
         "input-border": "#ECEFF1",
         "modals-bg": "rgba(0,0,0,0.65)",
+        "toggle-bg": "#1976D2",
+        "toggle-button": "#1976D2",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],

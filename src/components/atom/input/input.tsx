@@ -31,7 +31,7 @@ const Input = ({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className="w-full rounded border border-input-border px-4 py-3 text-xl font-normal text-black placeholder:text-placeholder sm:w-[404px]"
+        className="w-full rounded border border-input-border px-4 py-3 text-xl font-normal text-black placeholder:text-placeholder sm:w-[404px] md:w-full"
         required
       />
       {type === "password" ? (

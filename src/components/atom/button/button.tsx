@@ -5,7 +5,7 @@ const Button = ({ children, type }: ButtonProps) => {
   return (
     <button
       type={type}
-      className="h-fit w-fit rounded bg-merah px-4 py-3 text-white"
+      className="h-fit w-full rounded bg-merah px-4 py-3 text-white md:w-fit"
     >
       {children}
     </button>
